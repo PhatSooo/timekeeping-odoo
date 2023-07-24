@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Action -->
+    <record id="timekeeping_device_action" model="ir.actions.act_window">
+        <field name="name">Device Configuration</field>
+        <field name="res_model">timekeeping.device</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="timekeeping_device_view_tree" model="ir.ui.view">
+        <field name="name">timekeeping.device.tree</field>
+        <field name="model">timekeeping.device</field>
+        <field name="arch" type="xml">
+            <tree string="TimeKeeping Device Tree View">
+                <field name="host" />
+                <field name="username" />
+                <field name="password" />
+                <field name="machinename" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="timekeeping_device_form_view" model="ir.ui.view">
+        <field name="name">timekeeping.device.form</field>
+        <field name="model">timekeeping.device</field>
+        <field name="arch" type="xml">
+            <form string="TimeKeeping Device Form View">
+                <header>
+                    <field name="state" invisible="1" />
+                    <button name="Check_Connection" type="object" string="Checking Connection"
+                        class="oe_highlight" attrs="{'invisible': [('state', '=', True)]}" />
+                </header>
+                <sheet>
+                    <group col="2">
+
+                        <group>
+                            <field name="host" />
+                            <field name="username" />
+                            <field name="password" />
+                        </group>
+
+                        <group>
+                            <field name="machinename" readonly="True" />
+                            <field name="softwareversion" readonly="True" />
+                            <field name="hardwareversion" readonly="True" />
+                            <field name="machineseri" readonly="True" />
+                        </group>
+
+                    </group>
+
+                    <notebook>
+                        <page string="User In Machine">
+                            <button name="Load_User_In_Device" string="Load User In Device"
+                                type="object"
+                                class="oe_highlight"></button>
+                            <newline />
+                            <field name="employee_ids" editable="False">
+                                <tree>
+                                    <field name="user_id" />
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Mapped Employees">
+                            <button name="Mapping" string="Hello Mấy Cưng"
+                                type="object"
+                                class="oe_highlight">
+                            </button>
+
+                            <field name="employees_mapped">
+                                <tree>
+                                    <field name="name" />
+                                </tree>
+                            </field>
+
+                        </page>
+
+                        <page string="Unmapped Employees">
+                            <button name="Mapping" string="Hello Mấy Cưng"
+                                type="object"
+                                class="oe_highlight">
+                            </button>
+
+                            <field name="un_mapped">
+                                <tree>
+                                    <field name="user_name" />
+                                    <field name="user_id" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>

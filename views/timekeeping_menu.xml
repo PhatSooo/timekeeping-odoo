@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="timekeeping_menu_root" name="TimeKeeping">
+        <menuitem id="timekeeping_first_level_menu" name="Device Management">
+            <menuitem id="timekeeping_menu_action" action="timekeeping_device_action" />
+        </menuitem>
+    </menuitem>
+
+</odoo>
